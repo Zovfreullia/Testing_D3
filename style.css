@@ -1,8 +1,7 @@
-  .axis path, .axis line
+.axis path, .axis line
         {
             fill: none;
-            stroke: #777;
-            shape-rendering: crispEdges;
+            stroke: none;
         }
         
         .axis text
@@ -10,13 +9,90 @@
             font-family: 'Arial';
             font-size: 13px;
         }
+
         .tick
         {
             stroke-dasharray: 1, 2;
         }
+
         .bar
         {
-            fill: FireBrick;
+            fill: red;
         }
-        
+
+        .bar: hover {
+            fill: blue;
+        }
+
+#visualisation {
+    width: 4000px; 
+    height: 600px;
+}
+
+.outer {
+    width: 900px;
+    overflow: auto;
+    background-color: white;
+    border-radius: 10%;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2em;
+    bottom: 2em;
+
+    margin: auto;
+}
+.inner {
+    width: 100%;
+}  
+
+#header {
+    position: fixed;
+    left: 30%;
+    right: 30%;
+    font-family: times, Times New Roman, times-roman, georgia, serif;
+    color: #444;
+    margin: 0;
+    padding: 0px 0px 6px 0px;
+    font-size: 50px;
+    line-height: 44px;
+    letter-spacing: -2px;
+    font-weight: bold;
+}
+
+
+.d3-tip {
+  line-height: 1;
+  font-weight: bold;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: 2px;
+}
+
+body {
+    background: url('http://1.bp.blogspot.com/_UdH8rcs3s1Q/TGdcNtKNxOI/AAAAAAAAAKM/-jvA0rVt9_E/s320/iPadBackgroundTexture-brown.png');
+    background-repeat: repeat;
+}
+
+/* Creates a small triangle extender for the tooltip */
+.d3-tip:after {
+  box-sizing: border-box;
+  display: inline;
+  font-size: 10px;
+  width: 100%;
+  line-height: 1;
+  color: rgba(0, 0, 0, 0.8);
+  content: "\25BC";
+  position: absolute;
+  text-align: center;
+}
+
+/* Style northward tooltips differently */
+.d3-tip.n:after {
+  margin: -1px 0 0 0;
+  top: 100%;
+  left: 0;
+}
        

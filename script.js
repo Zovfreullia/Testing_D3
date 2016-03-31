@@ -1158,48 +1158,61 @@ function InitChart() {
 ];
 
 
+  var time = "";
 
   var vis = d3.select('#visualisation'),
-    WIDTH = 2000,
-    HEIGHT = 500,
+    WIDTH = 10000,
+    HEIGHT = 400,
     MARGINS = {
-      top: 20,
+      top: 10,
       right: 0,
-      bottom: 20,
+      bottom: 0,
       left: 50
     },
-    PARSEDATE = d3.time.format("%Y-%m-%d %H:%M:%S").parse,
 
     X = d3.time.scale().range([130, WIDTH - 140]),
 
-    xRange = d3.scale.ordinal().rangeRoundBands([-16, WIDTH], 0.4).domain(barData.map(function (d) {
+    xRange = d3.scale.ordinal().rangeRoundBands([-16, WIDTH], 0.2).domain(barData.map(function (d) {
       return d.x;
     })),
 
 
-    yRange = d3.scale.linear().range([HEIGHT - MARGINS.top, MARGINS.bottom]).domain([0,
+    yRange = d3.scale.linear().range([HEIGHT, 200]).domain([0,
       d3.max(barData, function (d) {
         return d.y;
       })
     ]),
 
     xAxis = d3.svg.axis()
-        .scale(X)
-        .orient("bottom")
-        .tickSubdivide(true)
-        .tickFormat(d3.time.format("%H:%M %p")),
+      .orient("bottom")
+      .tickSubdivide(true)
+      .scale(xRange)
+      .tickSize(5),
 
     yAxis = d3.svg.axis()
       .scale(yRange)
       .tickSize(5)
       .orient("left")
-      .tickSubdivide(true);
+      .tickSubdivide(true),
+
+    tooltip = d3.select("body")
+      .append("div")
+        .style("position", "absolute")
+        .style("z-index", "10")
+        .style("visibility", "hidden")
+        .text("March 22, 2016");
 
 
   vis.append('svg:g')
     .attr('class', 'x axis')
     .attr('transform', 'translate(0,' + (HEIGHT - MARGINS.bottom) + ')')
-    .call(xAxis);
+    .call(xAxis)
+     .selectAll("text")  
+     .style("text-anchor", "end")
+     .attr("dx", "-.8em")
+     .attr("dy", ".15em")
+     .attr("transform", "rotate(-65)");
+
 
   vis.append('svg:g')
     .attr('class', 'y axis')
@@ -1213,6 +1226,9 @@ function InitChart() {
       .style('text-anchor', 'end')
       .text('Temperature (C)');
 
+  vis.append("text")
+    .text("Bar Chart")
+    .attr("class","title");
 
   vis.selectAll('rect')
     .data(barData)
@@ -1231,7 +1247,11 @@ function InitChart() {
     .attr('fill', 'grey')
     .on('mouseover',function(d){
       d3.select(this)
-        .attr('fill','blue');
-    });
+        .attr('fill','green')
+    })
+    .on('mouseout',function(d){
+      d3.select(this)
+        .attr('fill','grey')
+    });;
 
 }
