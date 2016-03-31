@@ -1248,10 +1248,17 @@ function InitChart() {
     .on('mouseover',function(d){
       d3.select(this)
         .attr('fill','green')
+          .append("title")
+            .text(function(d) {
+            return "This value is " + d.y;
+          })
     })
+
     .on('mouseout',function(d){
       d3.select(this)
         .attr('fill','grey')
-    });;
+    });
+
+
 
 }
