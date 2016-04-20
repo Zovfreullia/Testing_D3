@@ -1,5 +1,7 @@
 # tomato_greenhouse
 
+<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/mit-license-brightgreen.svg" alt="mit license"></a>
+
 ####The website is live [here](http://kaira.one/tomato_greenhouse)
 
 A D3.js visualization that utilizes data from a tomato greenhouse farm. Since this is my first D3.js application,
