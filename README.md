@@ -1,7 +1,5 @@
 # tomato_greenhouse
 
-<a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/mit-license-brightgreen.svg" alt="mit license"></a>
-
 ####The website is live [here](http://kaira.one/tomato_greenhouse)
 
 A project for [Agrilyst](http://agrilyst.com/).
