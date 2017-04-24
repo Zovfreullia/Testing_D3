@@ -1,4 +1,4 @@
-# tomato_greenhouse
+# Tomato data from a greenhouse
 
 #### The website is live [here](http://kaira.one/tomato_greenhouse)
 
